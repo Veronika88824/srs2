@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+О нас - Шаурма у Алекса
+{% endblock %}
+
+{% block content %}
+<h2>О нашей шаурмичной</h2>
+
+<div class="info-box">
+    <h3>Шаурма у Алекса - это семейное заведение, которое работает с 2020 года.</h3>
+</div>
+
+<h3>Наша история</h3>
+<p>Алекс начинал с маленького фуд-трака на рынке, а сегодня у нас уже 3 точки в городе и собственная служба доставки.</p>
+
+<h3>Наши принципы</h3>
+<ul>
+    <li>Только свежее мясо от проверенных поставщиков</li>
+    <li>Овощи закупаем каждое утро</li>
+    <li>Готовим при вас - никаких заготовок</li>
+    <li>Готовим с душой, как для себя</li>
+</ul>
+
+<div class="chef-section">
+    <h3>Наш шеф-повар</h3>
+    <img src="{{ url_for('static', filename='images/chef.png') }}" alt="Шеф-повар Алекс" class="chef-photo">
+    <div class="chef-name">Алекс</div>
+    <div class="chef-title">Главный по шаурме и информатике</div>
+    <p style="margin-top: 20px; font-size: 18px; font-style: italic;">"Готовлю шаурму так же хорошо, как объясняю Python!"</p>
+</div>
+
+<h3>Контакты</h3>
+<div class="info-box">
+    <p><strong>Адрес:</strong> метро Войковская</p>
+    <p><strong>Телефон:</strong> +317</p>
+    <p><strong>Режим работы:</strong> ежедневно с 10:00 до 23:00</p>
+    <p><strong>Email:</strong> alex@shaurma-house.ru</p>
+</div>
+
+<p style="text-align: center; margin-top: 40px;">
+    <a href="{{ url_for('menu') }}" class="btn">Перейти в меню</a>
+</p>
+{% endblock %}

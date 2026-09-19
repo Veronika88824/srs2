@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Оформление заказа
+{% endblock %}
+
+{% block content %}
+<h2>Оформление заказа</h2>
+
+<div class="info-box">
+    <h3>Скоро здесь будет форма заказа!</h3>
+    <p>А пока выбери блюдо из нашего меню.</p>
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ url_for('menu') }}" class="btn">Перейти в меню</a>
+</p>
+{% endblock %}

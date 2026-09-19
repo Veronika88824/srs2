@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+Акция для студентов - Шаурма-Хаус
+{% endblock %}
+
+{% block content %}
+<h2>Акция "Скидка для студента"</h2>
+
+<div class="promo-banner">
+    <h3>СКИДКА 15% ДЛЯ СТУДЕНТОВ!</h3>
+    <p>Заполните форму ниже, подтвердите статус студента и получите уникальный промокод</p>
+</div>
+
+{% if promo_code %}
+<div class="info-box" style="text-align: center; background-color: #e8f5e9; border-color: #4caf50;">
+    <h3 style="color: #2e7d32;">Ваш промокод готов!</h3>
+    <p>Используйте его при оформлении заказа:</p>
+    <div class="promo-code-box">{{ promo_code }}</div>
+    <p><strong>Скидка 15%</strong> будет применена автоматически.</p>
+    <a href="{{ url_for('order') }}" class="btn btn-success">Оформить заказ со скидкой</a>
+</div>
+{% else %}
+<p style="font-size: 18px; text-align: center;">Для получения скидки необходимо подтвердить статус студента. Заполните форму:</p>
+
+<form method="POST" action="{{ url_for('promo') }}" style="max-width: 600px; margin: 30px auto;">
+    <div class="form-group">
+        <label for="full_name">ФИО студента: *</label>
+        <input type="text" id="full_name" name="full_name"
+               value="{{ form_data.full_name if form_data else '' }}"
+               placeholder="Иванов Иван Иванович"
+               required>
+        {% if errors.full_name %}
+            <span class="error">{{ errors.full_name }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="university">Учебное заведение: *</label>
+        <input type="text" id="university" name="university"
+               value="{{ form_data.university if form_data else '' }}"
+               placeholder="Например: МГУ им. Ломоносова"
+               required>
+        {% if errors.university %}
+            <span class="error">{{ errors.university }}</span>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="student_id">Номер студенческого билета: *</label>
+        <input type="text" id="student_id" name="student_id"
+               value="{{ form_data.student_id if form_data else '' }}"
+               placeholder="Например: 12345678"
+               required>
+        {% if errors.student_id %}
+            <span class="error">{{ errors.student_id }}</span>
+        {% endif %}
+    </div>
+
+    <p style="text-align: center;">
+        <button type="submit" class="btn btn-success">Получить промокод</button>
+    </p>
+</form>
+
+<p class="note" style="text-align: center;">* - обязательные поля. Промокод можно использовать один раз.</p>
+{% endif %}
+
+<div class="info-box">
+    <h3>Условия акции:</h3>
+    <ul>
+        <li>Скидка 15% действует на все блюда меню</li>
+        <li>Один промокод на один студенческий билет</li>
+        <li>Акция действует для студентов очной формы обучения</li>
+        <li>Промокод нужно ввести при оформлении заказа</li>
+    </ul>
+</div>
+{% endblock %}

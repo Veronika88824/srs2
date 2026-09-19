@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Шаурма у Алекса{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🔥 Шаурма у Алекса </h1>
+        <p>Самая сочная шаурма в городе! Готовит лично Алекс!</p>
+        <nav>
+            <a href="{{ url_for('index') }}">Главная</a>
+            <a href="{{ url_for('menu') }}">Меню</a>
+            <a href="{{ url_for('promo') }}">Акция для студентов</a>
+            <a href="{{ url_for('changelog') }}">Лог изменений</a>
+            <a href="{{ url_for('about') }}">О нас</a>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>🔥 Шаурма у Алекса © 2026 | Работаем с 10:00 до 23:00 | Тел: +317</p>
+        <p>Шеф-повар Алекс - лучший в своём деле!</p>
+    </footer>
+</body>
+</html>

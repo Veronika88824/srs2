@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ dish.name }} - Шаурма-Хаус
+{% endblock %}
+
+{% block content %}
+<h2>{{ dish.name }}</h2>
+
+<div class="info-box">
+    <div class="order-row">
+        <span><strong>Вес:</strong></span>
+        <span>{{ dish.weight }}</span>
+    </div>
+    <div class="order-row">
+        <span><strong>Категория:</strong></span>
+        <span>{{ dish.category }}</span>
+    </div>
+    <div class="order-row order-total">
+        <span>Цена:</span>
+        <span>{{ dish.price }} руб.</span>
+    </div>
+</div>
+
+<h3>Описание:</h3>
+<p style="font-size: 18px; line-height: 1.8;">{{ dish.description }}</p>
+
+<p style="text-align: center; margin-top: 30px;">
+    <a href="{{ url_for('order') }}" class="btn">Заказать это блюдо</a>
+    <a href="{{ url_for('menu') }}" class="btn btn-secondary">Вернуться в меню</a>
+</p>
+{% endblock %}
